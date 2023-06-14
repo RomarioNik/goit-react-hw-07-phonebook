@@ -1,16 +1,31 @@
-export const App = () => {
+import ContactForm from './ContactForm';
+import ContactList from './ContactList';
+import Filter from './Filter';
+import {
+  Container,
+  PhoneBook,
+  Wrapper,
+  TitlePrime,
+  TitleSecond,
+} from './App.styled';
+
+const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Container>
+      <PhoneBook>
+        <Wrapper>
+          <TitlePrime>Phonebook</TitlePrime>
+          <ContactForm />
+        </Wrapper>
+
+        <Wrapper>
+          <TitleSecond>Contacts</TitleSecond>
+          <Filter />
+        </Wrapper>
+        <ContactList />
+      </PhoneBook>
+    </Container>
   );
 };
+
+export default App;
