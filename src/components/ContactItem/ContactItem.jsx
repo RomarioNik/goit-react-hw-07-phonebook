@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsSlice.js';
+import { deleteContact } from '../../redux/operations';
 import {
   ListItem,
   AvatarWrapper,
@@ -12,7 +12,7 @@ import {
   IconTrash,
 } from './ContactItem.styled';
 
-const ContactItem = ({ id, name, number }) => {
+const ContactItem = ({ id, name, phone }) => {
   const dispatch = useDispatch();
 
   return (
@@ -23,7 +23,7 @@ const ContactItem = ({ id, name, number }) => {
 
       <Contact>
         <Name>{name}</Name>
-        <Phone>{number}</Phone>
+        <Phone>{phone}</Phone>
       </Contact>
 
       <TrashButton onClick={() => dispatch(deleteContact(id))}>
@@ -36,7 +36,7 @@ const ContactItem = ({ id, name, number }) => {
 ContactItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
 };
 
 export default ContactItem;

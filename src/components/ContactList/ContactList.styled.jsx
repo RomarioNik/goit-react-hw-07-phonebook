@@ -6,3 +6,12 @@ export const List = styled.ul`
   border-radius: 24px;
   background-color: ${({ theme }) => theme.colors.bgItems};
 `;
+
+export const Loading = styled.p`
+  text-align: center;
+  color: blue;
+`;
+
+export const Error = styled(Loading)`
+  color: red;
+`;
