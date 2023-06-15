@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Form, InputContact, Button } from './ContactForm.styled';
 import { addContact } from '../../redux/operations';
-import { getContacts } from '../../redux/selector';
+import { selectContacts } from '../../redux/selector';
 
 const checkDuplicateName = (contacts, nameContact) => {
   const newName = nameContact.toLowerCase();
@@ -13,7 +13,7 @@ const ContactForm = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
-  const { items } = useSelector(getContacts);
+  const items = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleChangeInputName = ({ target: { value } }) => {

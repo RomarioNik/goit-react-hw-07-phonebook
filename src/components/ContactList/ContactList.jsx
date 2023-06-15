@@ -1,20 +1,16 @@
 import { useSelector } from 'react-redux';
 import ContactItem from 'components/ContactItem';
 import { List, Loading, Error } from './ContactList.styled';
-import { getContacts, getFilterValue } from 'redux/selector';
-
-const filterContacts = (contacts, checkName) => {
-  const normalizedFilter = checkName.toLocaleLowerCase();
-  return contacts.filter(({ name }) =>
-    name.toLocaleLowerCase().includes(normalizedFilter)
-  );
-};
+import {
+  selectIsLoading,
+  selectError,
+  selectFilteredContacts,
+} from 'redux/selector';
 
 const ContactList = () => {
-  const { items, isLoading, error } = useSelector(getContacts);
-  const newName = useSelector(getFilterValue);
-
-  const filteredContacts = filterContacts(items, newName);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+  const filteredContacts = useSelector(selectFilteredContacts);
 
   if (filteredContacts.length === 0) return null;
 
